@@ -58,7 +58,30 @@ Two plots are present. The x-axis in the first plot indicates infected, denoting
 
 There are two plotlines in this story. In the first plot, the x-axis shows infected, which indicates if the participants are infected with COVID-19. On the y-axis is the count, or total number of people who received COVID-19 or not. In the second plot described above, the graph's left two bars reflect each individual with COVID-19. The x-axis indicates a person's COVID-19 status. Instead of the overall number of cases of the illness, the y-axis now displays the proportion of patients who got COVID-19 after getting the vaccination or a placebo.
 
+### Numerical results
+
+```{r}
+table1 <- xtabs(~infected + treatment, data=Males)
+rowPerc(table1)
+colPerc(table1)
+```
+
+
+Based on the numerical data, 74% of males who took a placebo and 26% who received the vaccine contracted COVID-19. When receiving the vaccine, men are less likely to get COVID-19 than when receiving a placebo. The vaccination is a more effective medication to take than a placebo. The Placebo has a twice as high chance of contracting COVID-19.
+### Inferential 
+
+
+
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+guysfish <- fisher.test(table1)
+guysfish
+```
 ## Females
+
+
+
 
 
 ## LGBTQ
