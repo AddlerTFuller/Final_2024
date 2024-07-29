@@ -191,7 +191,7 @@ The COVID-19 effectiveness for gals (females) is shown above. The vaccine is eff
 
 70% or higher is the standard for a vaccine's effectiveness. This vaccination is quite effective at preventing women from contracting COVID-19.
 
-The approximate effectiveness of the vaccine is indicated by the odds ratio. As can be seen above, the odds ratio for the Females is 74. For the females, the efficacy confidence interval is 39.15 to 68.99.
+The approximate effectiveness of the vaccine is indicated by the odds ratio. As can be seen above, the odds ratio for the Females is 74. For the females, the efficacy confidence interval is 39.15 to 68.99
 
 
 
