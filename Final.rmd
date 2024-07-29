@@ -25,18 +25,13 @@ mutate(across(where(is.character), as.factor))
 A new  preventative vaccine (covid921) is under test in clinical trials. Given the nature of this vaccine it is suspected that the drug may exhibit different effectiveness across the variety of subpopulations tracked. Consider population subgroups by gender( guys and gals), drug use, and sexual orientation. Write a complete report that separately considers this drug for each subgroup and your recommendations as to whether people in the subgroup should take the vaccine. Structure your report in four sections each devoted to one of the four subgroups, use null and alternative hypothesis statements and correct statistical verbage when referencing p-values in conclusions.
 
 ## Males
-```{r}
-Males <-filter(FinalDat, sex=="M")
-```
+
+### Barplot 
 
 
-```{r}
-Males <-select(Males,-sex)
-```
 
-## Graphic Desscription 
 ```{r}
-dd2 <- Males %>% group_by(infected,treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
+dd2 <- Females %>% group_by(infected,treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
 
 
 # the group_by followed by summarize(count=n())
@@ -52,7 +47,7 @@ basicCC + geom_bar(stat="identity", position = "dodge")
 
 The male population is represented in this plot along with its relationship to the Covid 19 infection by using either a placebo or the vaccine. 
 
-The data above data shows that 25% of vaccine recipients actually developed COVID-19, compared to only about 75% of placebo recipients.  Those who received the vaccine had a much lesser chance of contracting COVID-19 than those who received a placebo. It seems that the vaccine offers no defense against COVID-19. While receiving the Placebo, there is a 3:1 chance of contracting COVID-19. Men who used the medication had a 1.5-fold lower risk of contracting COVID-19 compared to those who took a Placebo.
+The data above data shows that 23% of vaccine recipients actually developed COVID-19, compared to only about 75% of placebo recipients.  Those who received the vaccine had a much lesser chance of contracting COVID-19 than those who received a placebo. It seems that the vaccine offers no defense against COVID-19. While receiving the Placebo, there is a 3:1 chance of contracting COVID-19. Men who used the medication had a 1.5-fold lower risk of contracting COVID-19 compared to those who took a Placebo.
 
 Two plots are present. The x-axis in the first plot indicates infected, denoting whether or not the participants have COVID-19 infection. The count, or total number of individuals who received COVID-19 or not, is shown on the y-axis. In the above-mentioned second plot, The All of the individuals with COVID-19 are represented by the graph's left two bars. Whether or not a person has COVID-19 is shown on the x-axis. However, the y-axis now shows the percentage of patients who contracted COVID-19 after receiving the vaccine or a placebo, rather than the total number of cases of the disease.
 
@@ -106,13 +101,10 @@ The approximate effectiveness of the vaccine is indicated by the odds ratio. As 
 
 ## Females
 
-```{r}
-Females <-filter(FinalDat, sex=="M")
-```
+### Barplot
 
-```{r}
-Females <-select(Females,-sex)
-```
+
+
 
 ```{r}
 dd2 <- Females %>% group_by(infected,treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
@@ -134,6 +126,7 @@ This plot illustrates the population of gals, or females, and how they relate to
 Compared to the last plot, it seems that more individuals who received the placebo actually got COVID-19 in this one. It was reported that only about 37% of those who received the vaccination actually got COVID-19. This indicates that about 64% of those who contracted COVID-19 were those who were given a placebo alone.There is a 1:2 chance of contracting COVID-19 while receiving the vaccination. Girls who received the vaccine had a 50% equal chances of contracting COVID-19 compared to those who received a placebo.
 
 Two plots are present. The x-axis in the first plot indicates infected, denoting whether or not the participants have COVID-19 infection. The count, or total number of individuals who received COVID-19 or not, is shown on the y-axis.
+
 In the above-mentioned second plot, The All of the individuals with COVID-19 are represented by the graph's left two bars. Whether or not a person has COVID-19 is shown on the x-axis. However, the y-axis now shows the percentage of patients who contracted COVID-19 after receiving the vaccine or a placebo, rather than the total number of cases of the disease. 
 
 The code block starting with dd2, which is visible in the environment pane and, upon inspection, contains 4, is the first code block that generates this plot. 
@@ -197,7 +190,30 @@ The approximate effectiveness of the vaccine is indicated by the odds ratio. As 
 
 
 ## LGBTQ
+```{r}
+LGBT <-filter(FinalDat, sex=="LGBT")
+```
 
+
+```{r}
+LGBT <-select(LGBT,-sex)
+```
+
+## Graphic Desscription 
+```{r}
+dd2 <- LGBT %>% group_by(infected,treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
+
+
+# the group_by followed by summarize(count=n())
+
+basicC <- ggplot(dd2,aes(x=infected,y=count,fill=treatment))
+basicC + geom_bar(stat="identity",position="dodge")
+
+#Now for percentage plot
+
+basicCC <- ggplot(dd2,aes(x=infected,y=prcnt*100,fill=treatment)) 
+basicCC + geom_bar(stat="identity", position = "dodge")
+```
 
 
 ## Druggies
