@@ -75,9 +75,18 @@ Based on the numerical data, 74% of males who took a placebo and 26% who receive
 ```{r}
 chisq.test(table1)
 chisqtestGC(table1)
-guysfish <- fisher.test(table1)
-guysfish
+Malesfish <- fisher.test(table1)
+Malesfish
 ```
+
+
+The output of the Fisher's Exact test should be carefully examined among all of these findings. At 2,2e-16, the p-value shown above is incredibly small. This is a remarkably little figure. This figure indicates that it is unlikely that these outcomes happened by accident.
+
+According to the null hypothesis, sex has no bearing on the mortality caused by COVID-19. The alternative theory—that there is a relationship between sex and COVID-19 deaths—is the more likely one given the overwhelming evidence that sex does affect people's death rates.
+
+
+
+
 ## Females
 
 
