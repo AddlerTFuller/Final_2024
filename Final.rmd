@@ -129,6 +129,68 @@ basicCC <- ggplot(dd2,aes(x=infected,y=prcnt*100,fill=treatment))
 basicCC + geom_bar(stat="identity", position = "dodge")
 ```
 
+This plot illustrates the population of gals, or females, and how they relate to the COVID-19 infection by discussing the vaccine or a placebo. 
+
+Compared to the last plot, it seems that more individuals who received the placebo actually got COVID-19 in this one. It was reported that only about 37% of those who received the vaccination actually got COVID-19. This indicates that about 64% of those who contracted COVID-19 were those who were given a placebo alone.There is a 1:2 chance of contracting COVID-19 while receiving the vaccination. Girls who received the vaccine had a 50% equal chances of contracting COVID-19 compared to those who received a placebo.
+
+Two plots are present. The x-axis in the first plot indicates infected, denoting whether or not the participants have COVID-19 infection. The count, or total number of individuals who received COVID-19 or not, is shown on the y-axis.
+In the above-mentioned second plot, The All of the individuals with COVID-19 are represented by the graph's left two bars. Whether or not a person has COVID-19 is shown on the x-axis. However, the y-axis now shows the percentage of patients who contracted COVID-19 after receiving the vaccine or a placebo, rather than the total number of cases of the disease. 
+
+The code block starting with dd2, which is visible in the environment pane and, upon inspection, contains 4, is the first code block that generates this plot.
+
+
+### Numerical results
+
+```{r}
+table1 <- xtabs(~infected + treatment, data=Females)
+rowPerc(table1)
+colPerc(table1)
+```
+The percentages of girls, or women, who contracted COVID-19 after receiving the vaccine and a placebo are displayed in these numerical results. 
+26% of the gals (women) who had the vaccination and developed COVID-19 were infected, as roughly shown by the earlier plots. 74% of the girls who received the placebo also had COVID-19. Girls are indeed effectively shielded from contracting COVID-19 by the immunization. 
+For girls receiving the vaccine, the risk of contracting COVID-19 is 1:1. The risk of contracting COVID-19 was halved for the girls who received the vaccine compared to the placebo group.
+
+
+### Inferential 
+
+
+
+
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+Femalesfish <- fisher.test(table1)
+Femalesfish
+```
+
+The output of the Fisher's Exact test should be carefully examined among all of these findings. At 0.95, the p-value shown above is incredibly tiny. This is a minuscule amount. This number indicates that the results are unlikely to be the result of chance, and the alternative hypothesis can be accepted in place of the null hypothesis.
+
+
+According to the Fishers' Exact Test, the odds ratio was 2.8. Women who received the medication had an approximate 0.32-fold increased risk of contracting COVID-19 compared to those who received a placebo.
+
+```{r}
+effect <- Femalesfish$p.value/(Femalesfish$p.value +1)
+effectivenessFemales = Femalesfish$estimate/(Femalesfish$estimate +1)*100
+print(effectivenessFemales)
+```
+
+```{r}
+low=(Femalesfish$conf.int[1]/(Femalesfish$conf.int[1] +1))*100
+hi=(Femalesfish$conf.int[2]/(Femalesfish$conf.int[2] +1))*100
+options(digits=2)
+```
+
+
+## Effectiveness Confidence Interval `r low`  to `r hi`
+
+
+The COVID-19 effectiveness for gals (females) is shown above. The vaccine is effective if the efficacy rate is higher than 60%. We can conclude that the vaccination is very successful in preventing girls from contracting COVID-19 based on the interval shown above. 
+
+70% or higher is the standard for a vaccine's effectiveness. This vaccination is quite effective at preventing women from contracting COVID-19.
+
+The approximate effectiveness of the vaccine is indicated by the odds ratio. As can be seen above, the odds ratio for the Females is 74. For the females, the efficacy confidence interval is 39.15 to 68.99.
+
+
 
 
 ## LGBTQ
