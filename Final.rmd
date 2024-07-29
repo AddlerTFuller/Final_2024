@@ -146,8 +146,11 @@ table1 <- xtabs(~infected + treatment, data=Females)
 rowPerc(table1)
 colPerc(table1)
 ```
+
 The percentages of girls, or women, who contracted COVID-19 after receiving the vaccine and a placebo are displayed in these numerical results. 
+
 26% of the gals (women) who had the vaccination and developed COVID-19 were infected, as roughly shown by the earlier plots. 74% of the girls who received the placebo also had COVID-19. Girls are indeed effectively shielded from contracting COVID-19 by the immunization. 
+
 For girls receiving the vaccine, the risk of contracting COVID-19 is 1:1. The risk of contracting COVID-19 was halved for the girls who received the vaccine compared to the placebo group.
 
 
