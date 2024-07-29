@@ -169,7 +169,7 @@ Femalesfish
 The output of the Fisher's Exact test should be carefully examined among all of these findings. At 0.95, the p-value shown above is incredibly tiny. This is a minuscule amount. This number indicates that the results are unlikely to be the result of chance, and the alternative hypothesis can be accepted in place of the null hypothesis.
 
 
-According to the Fishers' Exact Test, the odds ratio was 2.8. Women who received the medication had an approximate 0.32-fold increased risk of contracting COVID-19 compared to those who received a placebo.
+According to the Fishers' Exact Test, the odds ratio was 2.8. Women who received the medication had an approximate 0.32-fold increased risk of contracting COVID-19 compared to those who received a placebo
 
 ```{r}
 effect <- Femalesfish$p.value/(Femalesfish$p.value +1)
