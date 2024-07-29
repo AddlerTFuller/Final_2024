@@ -136,7 +136,7 @@ Compared to the last plot, it seems that more individuals who received the place
 Two plots are present. The x-axis in the first plot indicates infected, denoting whether or not the participants have COVID-19 infection. The count, or total number of individuals who received COVID-19 or not, is shown on the y-axis.
 In the above-mentioned second plot, The All of the individuals with COVID-19 are represented by the graph's left two bars. Whether or not a person has COVID-19 is shown on the x-axis. However, the y-axis now shows the percentage of patients who contracted COVID-19 after receiving the vaccine or a placebo, rather than the total number of cases of the disease. 
 
-The code block starting with dd2, which is visible in the environment pane and, upon inspection, contains 4, is the first code block that generates this plot.
+The code block starting with dd2, which is visible in the environment pane and, upon inspection, contains 4, is the first code block that generates this plot. 
 
 
 ### Numerical results
