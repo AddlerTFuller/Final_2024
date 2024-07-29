@@ -84,11 +84,50 @@ The output of the Fisher's Exact test should be carefully examined among all of 
 According to the null hypothesis, sex has no bearing on the mortality caused by COVID-19. The alternative theory—that there is a relationship between sex and COVID-19 deaths—is the more likely one given the overwhelming evidence that sex does affect people's death rates.
 
 
+```{r}
+effect <- Malesfish$p.value/(Malesfish$p.value +1)
+effectivenessMales = Malesfish$estimate/(Malesfish$estimate +1)*100
+print(effectivenessMales)
+```
+
+```{r}
+low=(Malesfish$conf.int[1]/(Malesfish$conf.int[1] +1))*100
+hi=(Malesfish$conf.int[2]/(Malesfish$conf.int[2] +1))*100
+options(digits=2)
+```
+
+## Effectiveness Confidence Interval `r low`  to `r hi`
+
+The efficacy of the COVID-19 vaccine for men is seen above. The vaccine is effective if the efficacy rate is higher than 50%. We can conclude that the vaccine is unsuccessful in preventing men from contracting COVID-19 based on the interval shown above. 
+
+The approximate effectiveness of the vaccine is indicated by the odds ratio. As can be seen above, the men' odds ratio is 74. For the males, the effectiveness confidence interval is 78.32 to 68.84.
+
 
 
 ## Females
 
+```{r}
+Females <-filter(FinalDat, sex=="M")
+```
 
+```{r}
+Females <-select(Females,-sex)
+```
+
+```{r}
+dd2 <- Females %>% group_by(infected,treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
+
+
+# the group_by followed by summarize(count=n())
+
+basicC <- ggplot(dd2,aes(x=infected,y=count,fill=treatment))
+basicC + geom_bar(stat="identity",position="dodge")
+
+#Now for percentage plot
+
+basicCC <- ggplot(dd2,aes(x=infected,y=prcnt*100,fill=treatment)) 
+basicCC + geom_bar(stat="identity", position = "dodge")
+```
 
 
 
