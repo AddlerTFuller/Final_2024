@@ -68,9 +68,8 @@ colPerc(table1)
 
 
 Based on the numerical data, 74% of males who took a placebo and 26% who received the vaccine contracted COVID-19. When receiving the vaccine, men are less likely to get COVID-19 than when receiving a placebo. The vaccination is a more effective medication to take than a placebo. The Placebo has a twice as high chance of contracting COVID-19.
+
 ### Inferential 
-
-
 
 ```{r}
 chisq.test(table1)
